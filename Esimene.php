@@ -1,3 +1,30 @@
+<?php
+	//see on kommentaar, järgmisena paar muutujat
+	$myName = "Daniel";
+	$myFamilyName = "Sula";
+	//vaatame, mis kell on ja määrame päeva osa
+	$hourNow = date("H");
+	//echo $hourNow;
+	$partOfDay = "";
+	if ( $hourNow < 18){  //  <     >     <=    >=    !=
+		$partofDay = "Varajane hommik";
+	}
+	if ($hourNow >= 8 and $hourNow < 16){
+		$partOfDay = "Koolipäev";
+	}
+	if ($hourNow > 16){
+		$partOfDay = "Vaba aeg";
+	}	
+	//echo $partofDay;	
+	//vaatame, kaua koolipäeva lõpuni aega on jäänud
+	$timeNow = strtotime(date("d.m.Y H:i:s"));
+	//echo $timeNow
+	$schoolDayEnd = strtotime(date("d.m.Y" ." " ."15:45"));
+	//echo $schoolDayEnd;
+	$toTheEnd = $schoolDayEnd - $timeNow;
+	echo "Koolipäeva lõpuni on jäänud". round($toTheEnd / 60);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +46,13 @@
 	</div></left>
 	<br></br>
 	<?php
-		echo "See on esimene jupp PVP abil väljastatud teksti!";
+		echo "<p>See on esimene jupp PHP abil väljastatud teksti!</p>";
+		echo "<p> Täna on  ";
+		echo date("d.m.Y") .", kell lehe avamisel oli " .date("H:i:s")  ;
+		echo ", käes on ". $partOfDay .".</p>";
+	?>
+	<?php
+	echo $myName . " "  . $myFamilyName;
 	?>
 
 <center><footer>Sulstale Productions &copy;</footer></center>
